@@ -1,0 +1,4 @@
+class Timeout:
+    SHORT_TIMEOUT = 5
+    MEDIUM_TIMEOUT = 10
+    LONG_TIMEOUT = 30
