@@ -1,9 +1,9 @@
-from selenium import webdriver
 import pytest
+from selenium import webdriver
 
-from pages.customer_login_page import CustomerLogin
 from pages.home_page import HomePage
-from pages.create_account_page import CreateAccountPage
+from pages.login_page import LoginPage
+from pages.registration_page import RegistrationPage
 
 
 @pytest.fixture()
@@ -15,7 +15,7 @@ def driver():
 
 @pytest.fixture()
 def login_page(driver):
-    return CustomerLogin(driver)
+    return LoginPage(driver)
 
 
 @pytest.fixture()
@@ -24,5 +24,5 @@ def home_page(driver):
 
 
 @pytest.fixture()
-def create_page(driver):
-    return CreateAccountPage(driver)
+def register_page(driver):
+    return RegistrationPage(driver)

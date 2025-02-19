@@ -1,7 +1,7 @@
-from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
 
 from config import Timeout
 
@@ -65,6 +65,4 @@ class BasePage:
 
     def fill_forms(self, fields: dict):
         for locator, data in fields.items():
-            field = self.wait.until(EC.element_to_be_clickable(locator))
-            field.clear()
-            field.send_keys(data)
+            self.fill_form(locator, data)

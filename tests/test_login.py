@@ -9,10 +9,10 @@ def test_invalid_login(login_page):
         'temporarily. Please wait and try again later.'
     )
     assert actual_alert_message == expected_alert_message, (f'Expected alert message '
-                                                            f'{expected_alert_message}, but got {actual_alert_message}')
+                                     f'{expected_alert_message}, but got {actual_alert_message}')
 
 
 def test_valid_login(login_page):
     login_page.open_page()
     login_page.fill_login_form('mary@hello.com', 'Kapuza123')
-    assert login_page.check_title_is_logined_in() == 'My Account'
+    assert 'Welcome' in login_page.check_title_is_log_in()

@@ -1,15 +1,15 @@
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from config import Urls
 from pages.base_page import BasePage
 from pages.locators.login_locators import LoginLocators as LoginLoc
 from pages.locators.my_account_locators import MyAccountLocators as AccountLoc
 
 
-class CustomerLogin(BasePage):
-
+class LoginPage(BasePage):
     def __init__(self, driver):
-        super().__init__(driver, 'https://magento.softwaretestingboard.com/customer/account/login')
+        super().__init__(driver)
+        self.url = Urls.LOGIN_PAGE
 
     def fill_login_form(self, login, password):
         email_input = (self.wait.until
@@ -31,8 +31,8 @@ class CustomerLogin(BasePage):
         )
         return alert_message.text
 
-    def check_title_is_logined_in(self):
+    def check_title_is_log_in(self):
         title_is = self.wait.until(
-            EC.visibility_of_element_located(AccountLoc.title_is_account)
+            EC.visibility_of_element_located(AccountLoc.LOCATOR_LOGGED_IN)
         )
         return title_is.text

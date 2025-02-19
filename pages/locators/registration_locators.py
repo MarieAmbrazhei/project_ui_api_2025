@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class CreateAccountLocators:
+class RegistrationLocators:
     LOCATOR_FIRST_NAME = (By.ID, "firstname")
     LOCATOR_LAST_NAME = (By.ID, "lastname")
     LOCATOR_EMAIL = (By.ID, "email_address")

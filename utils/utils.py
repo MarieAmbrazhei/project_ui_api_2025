@@ -1,9 +1,9 @@
 import random
 import string
+
 from faker import Faker
-from pages.locators.create_account_locators import CreateAccountLocators as CreateLoc
-from pages.locators.my_account_locators import MyAccountLocators as AccountLoc
-from utils.models import ValidateRegistrationData
+
+from utils.models import ValidateRegistrationModel
 
 fake = Faker()
 
@@ -13,14 +13,13 @@ class Random:
     @staticmethod
     def assemble_registration_data():
         pwd = Random.generate_password(8)
-        fields = {
-            CreateLoc.LOCATOR_FIRST_NAME: Random.first_name(),
-            CreateLoc.LOCATOR_LAST_NAME: Random.last_name(),
-            CreateLoc.LOCATOR_EMAIL: Random.generate_random_email(),
-            CreateLoc.LOCATOR_PASSWORD: pwd,
-            CreateLoc.LOCATOR_CONFIRM_PASSWORD: pwd
-        }
-        return ValidateRegistrationData(**fields)
+        return ValidateRegistrationModel(
+            first_name=Random.first_name(),
+            last_name=Random.last_name(),
+            email=Random.generate_random_email(),
+            password=pwd,
+            confirm_password=pwd
+        )
 
     @staticmethod
     def first_name() -> str:
