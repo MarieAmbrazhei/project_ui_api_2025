@@ -1,3 +1,4 @@
+from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support import expected_conditions as EC
 
 from config import Urls
@@ -32,7 +33,14 @@ class LoginPage(BasePage):
         return alert_message.text
 
     def check_title_is_log_in(self):
-        title_is = self.wait.until(
-            EC.visibility_of_element_located(AccountLoc.LOCATOR_LOGGED_IN)
-        )
-        return title_is.text
+        for _ in range(3):
+            try:
+                self.wait.until(
+                    EC.visibility_of_element_located(AccountLoc.LOCATOR_LOGGED_IN)
+                )
+                title_element = self.driver.find_element(*AccountLoc.LOCATOR_LOGGED_IN)
+                return title_element.text
+            except StaleElementReferenceException:
+                continue
+        raise Exception(
+            "Element not found or to many stale conditions")

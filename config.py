@@ -16,3 +16,4 @@ class Urls:
     WOMEN_PAGE = f'{BASE_URL}/women.html'
     MEN_PAGE = f'{BASE_URL}/men.html'
     GEAR_PAGE = f'{BASE_URL}/gear.html'
+    TOPS_WOMEN_PAGE = f'{BASE_URL}/women/tops-women.html'

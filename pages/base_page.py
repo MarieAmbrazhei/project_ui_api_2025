@@ -2,6 +2,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 
 from config import Timeout
 
@@ -66,3 +67,7 @@ class BasePage:
     def fill_forms(self, fields: dict):
         for locator, data in fields.items():
             self.fill_form(locator, data)
+
+    def hover_element(self, element):
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).perform()
